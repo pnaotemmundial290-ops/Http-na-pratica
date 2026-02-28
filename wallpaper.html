@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080" />
+  <title>Weekly Routine Wallpaper</title>
+  <!-- No external dependencies — fully self-contained -->
+  <style>
+    /* ─── Canvas: 1080 × 1920 px — exact mobile wallpaper dimensions ── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #060c1a;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    .wallpaper {
+      width: 1080px;
+      height: 1920px;
+      background: linear-gradient(160deg, #060d20 0%, #0a1530 55%, #060d20 100%);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Subtle dot-grid overlay */
+    .wallpaper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(56,139,253,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,139,253,0.035) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+
+    /* ─── Coloured block cards ──────────────────────────────────────── */
+    .block {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      border-radius: 16px;
+      border-left: 4px solid;
+      padding: 18px 26px;
+    }
+    .block-blue   { background: rgba(30,64,120,0.48);  border-color: #3b82f6; }
+    .block-indigo { background: rgba(55,48,163,0.32);  border-color: #818cf8; }
+    .block-teal   { background: rgba(15,118,110,0.32); border-color: #2dd4bf; }
+    .block-sky    { background: rgba(12,74,110,0.42);  border-color: #38bdf8; }
+    .block-violet { background: rgba(88,28,135,0.32);  border-color: #a78bfa; }
+    .block-green  { background: rgba(20,83,45,0.32);   border-color: #4ade80; }
+    .block-amber  { background: rgba(120,53,15,0.32);  border-color: #fbbf24; }
+    .block-rose   { background: rgba(136,19,55,0.32);  border-color: #fb7185; }
+
+    /* weekend compact block */
+    .wblock {
+      flex: 1;
+      border-radius: 14px;
+      border-left: 4px solid;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* ─── Day badges ────────────────────────────────────────────────── */
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      padding: 3px 10px;
+      border-radius: 20px;
+      display: inline-block;
+    }
+    .badge-mwf { background:rgba(59,130,246,0.22); color:#93c5fd; border:1px solid rgba(59,130,246,0.4); }
+    .badge-tth { background:rgba(168,85,247,0.2);  color:#c4b5fd; border:1px solid rgba(168,85,247,0.35); }
+    .badge-sat { background:rgba(34,197,94,0.18);  color:#86efac; border:1px solid rgba(34,197,94,0.3); }
+    .badge-sun { background:rgba(251,146,60,0.18); color:#fdba74; border:1px solid rgba(251,146,60,0.3); }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(148,163,184,0.65);
+    }
+    .time-lbl {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(148,163,184,0.6);
+      white-space: nowrap;
+      min-width: 96px;
+      line-height: 1.4;
+    }
+    .divider-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(56,139,253,0.3) 40%, rgba(56,139,253,0.3) 60%, transparent);
+    }
+  </style>
+</head>
+<body>
+<div class="wallpaper" id="wallpaper">
+
+  <!-- ══════════════ HEADER — 168px ════════════════════════════════ -->
+  <div style="height:168px; padding:50px 54px 26px; flex-shrink:0; position:relative; z-index:1; overflow:hidden;">
+    <div style="position:absolute;top:33px;left:35px;width:9px;height:9px;border-radius:50%;
+                background:#3b82f6;box-shadow:0 0 20px 5px rgba(59,130,246,0.6);"></div>
+    <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:8px;">
+      <h1 style="font-size:44px;font-weight:800;letter-spacing:-0.02em;color:#e2e8f0;line-height:1;">
+        Weekly <span style="color:#60a5fa;">Routine</span>
+      </h1>
+      <span style="font-size:19px;font-weight:500;color:rgba(148,163,184,0.5);">Mon – Sun</span>
+    </div>
+    <p style="font-size:13px;color:rgba(100,116,139,0.7);letter-spacing:0.08em;font-weight:500;">
+      STRUCTURED &nbsp;·&nbsp; CONSISTENT &nbsp;·&nbsp; FOCUSED
+    </p>
+    <div style="margin-top:16px;height:2px;background:linear-gradient(90deg,#3b82f6,#818cf8 60%,transparent);border-radius:2px;"></div>
+  </div>
+
+  <!-- ══════════════ MON–FRI — 764px ═══════════════════════════════ -->
+  <div style="height:764px; padding:0 40px; flex-shrink:0; display:flex; flex-direction:column; position:relative; z-index:1; overflow:hidden;">
+
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-shrink:0;">
+      <span class="section-label">Mon – Fri</span>
+      <div style="flex:1;height:1px;background:rgba(56,139,253,0.18);"></div>
+      <span style="font-size:10px;color:rgba(100,116,139,0.45);font-weight:700;letter-spacing:0.1em;">CORE SCHEDULE</span>
+    </div>
+
+    <!-- 8 items distributed via space-between across remaining height -->
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding-bottom:8px;">
+
+      <div class="block block-amber">
+        <div class="time-lbl">05:30<br/>07:00</div>
+        <div>
+          <div style="font-size:19px;font-weight:700;color:#fde68a;margin-bottom:3px;">🌅 Morning Routine</div>
+          <div style="font-size:13px;color:rgba(253,230,138,0.6);">Wake up &nbsp;·&nbsp; Hygiene &nbsp;·&nbsp; Stretch &nbsp;·&nbsp; Breakfast</div>
+        </div>
+      </div>
+
+      <div class="block block-blue">
+        <div class="time-lbl">07:00<br/>10:00</div>
+        <div>
+          <div style="font-size:19px;font-weight:700;color:#93c5fd;margin-bottom:3px;">🧠 Deep Work I</div>
+          <div style="font-size:13px;color:rgba(147,197,253,0.6);">Study &nbsp;·&nbsp; Theory &nbsp;·&nbsp; High-focus tasks</div>
+        </div>
+      </div>
+
+      <div class="block block-indigo">
+        <div class="time-lbl">10:00<br/>12:30</div>
+        <div>
+          <div style="font-size:19px;font-weight:700;color:#c7d2fe;margin-bottom:3px;">💻 Study / Practice</div>
+          <div style="font-size:13px;color:rgba(199,210,254,0.6);">Coding &nbsp;·&nbsp; Exercises &nbsp;·&nbsp; Problem solving</div>
+        </div>
+      </div>
+
+      <div class="block block-teal">
+        <div class="time-lbl">12:30<br/>13:30</div>
+        <div>
+          <div style="font-size:19px;font-weight:700;color:#99f6e4;margin-bottom:3px;">🍽 Lunch Break</div>
+          <div style="font-size:13px;color:rgba(153,246,228,0.6);">Meal &nbsp;·&nbsp; Short rest &nbsp;·&nbsp; Walk</div>
+        </div>
+      </div>
+
+      <div class="block block-sky">
+        <div class="time-lbl">13:30<br/>17:00</div>
+        <div>
+          <div style="font-size:19px;font-weight:700;color:#bae6fd;margin-bottom:3px;">🚀 Deep Work II</div>
+          <div style="font-size:13px;color:rgba(186,230,253,0.6);">Projects &nbsp;·&nbsp; Building &nbsp;·&nbsp; Applied study</div>
+        </div>
+      </div>
+
+      <div class="block block-green">
+        <div class="time-lbl">17:00<br/>19:00</div>
+        <div>
+          <div style="font-size:19px;font-weight:700;color:#86efac;margin-bottom:3px;">🏃 Physical Activity</div>
+          <div style="font-size:13px;color:rgba(134,239,172,0.6);">Gym &nbsp;·&nbsp; Run &nbsp;·&nbsp; Outdoor exercise</div>
+        </div>
+      </div>
+
+      <!-- 19:00 SPLIT BLOCK: MWF vs Tue/Thu -->
+      <div style="display:flex;gap:12px;">
+        <div class="block block-blue" style="flex:1;flex-direction:column;align-items:flex-start;gap:8px;padding:14px 20px;">
+          <span class="badge badge-mwf">MON &nbsp;·&nbsp; WED &nbsp;·&nbsp; FRI</span>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div class="time-lbl" style="min-width:auto;">19:00<br/>20:00</div>
+            <div>
+              <div style="font-size:17px;font-weight:700;color:#93c5fd;margin-bottom:2px;">🥋 Martial Arts</div>
+              <div style="font-size:12px;color:rgba(147,197,253,0.6);">Training class</div>
+            </div>
+          </div>
+        </div>
+        <div class="block block-violet" style="flex:1;flex-direction:column;align-items:flex-start;gap:8px;padding:14px 20px;">
+          <span class="badge badge-tth">TUE &nbsp;·&nbsp; THU</span>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div class="time-lbl" style="min-width:auto;">19:00<br/>20:00</div>
+            <div>
+              <div style="font-size:17px;font-weight:700;color:#c4b5fd;margin-bottom:2px;">🛠 Free / Project</div>
+              <div style="font-size:12px;color:rgba(196,181,253,0.6);">Side work &nbsp;·&nbsp; Exploration</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block block-rose">
+        <div class="time-lbl">20:00<br/>22:30</div>
+        <div>
+          <div style="font-size:19px;font-weight:700;color:#fda4af;margin-bottom:3px;">🌙 Evening Review</div>
+          <div style="font-size:13px;color:rgba(253,164,175,0.6);">Reading &nbsp;·&nbsp; Journal &nbsp;·&nbsp; Wind-down &nbsp;·&nbsp; Sleep prep</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Divider — 20px -->
+  <div style="height:20px; padding:0 40px; flex-shrink:0; display:flex; align-items:center; position:relative; z-index:1;">
+    <div class="divider-line" style="width:100%;"></div>
+  </div>
+
+  <!-- ══════════════ WEEKEND — 736px ═══════════════════════════════ -->
+  <div style="height:736px; padding:0 40px; flex-shrink:0; display:flex; flex-direction:column; position:relative; z-index:1; overflow:hidden;">
+
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-shrink:0;">
+      <span class="section-label">Weekend</span>
+      <div style="flex:1;height:1px;background:rgba(56,139,253,0.18);"></div>
+      <span style="font-size:10px;color:rgba(100,116,139,0.45);font-weight:700;letter-spacing:0.1em;">BUILD &amp; RESTORE</span>
+    </div>
+
+    <!-- Grid: 6 rows (day headers + 5 block pairs), space-between -->
+    <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:space-between;padding-bottom:8px;">
+
+      <!-- Day headers -->
+      <div style="text-align:center;">
+        <span class="badge badge-sat" style="font-size:11px;padding:4px 20px;">SATURDAY</span>
+      </div>
+      <div style="text-align:center;">
+        <span class="badge badge-sun" style="font-size:11px;padding:4px 20px;">SUNDAY</span>
+      </div>
+
+      <!-- Row 1 -->
+      <div class="wblock block-amber">
+        <div style="font-size:11px;font-weight:600;color:rgba(148,163,184,0.5);">07:00 – 09:00</div>
+        <div style="font-size:15px;font-weight:700;color:#fde68a;margin-top:2px;">🌄 Slow Morning</div>
+        <div style="font-size:12px;color:rgba(253,230,138,0.6);">Stretch &nbsp;·&nbsp; Journal &nbsp;·&nbsp; Breakfast</div>
+      </div>
+      <div class="wblock block-amber">
+        <div style="font-size:11px;font-weight:600;color:rgba(148,163,184,0.5);">07:00 – 09:00</div>
+        <div style="font-size:15px;font-weight:700;color:#fde68a;margin-top:2px;">☀️ Morning Ritual</div>
+        <div style="font-size:12px;color:rgba(253,230,138,0.6);">Meditation &nbsp;·&nbsp; Breakfast</div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="wblock block-sky">
+        <div style="font-size:11px;font-weight:600;color:rgba(148,163,184,0.5);">09:00 – 13:00</div>
+        <div style="font-size:15px;font-weight:700;color:#bae6fd;margin-top:2px;">🔨 Build Session</div>
+        <div style="font-size:12px;color:rgba(186,230,253,0.6);">Projects &nbsp;·&nbsp; Experiments</div>
+      </div>
+      <div class="wblock block-indigo">
+        <div style="font-size:11px;font-weight:600;color:rgba(148,163,184,0.5);">09:00 – 12:00</div>
+        <div style="font-size:15px;font-weight:700;color:#c7d2fe;margin-top:2px;">📚 Review &amp; Plan</div>
+        <div style="font-size:12px;color:rgba(199,210,254,0.6);">Week review &nbsp;·&nbsp; Next goals</div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="wblock block-teal">
+        <div style="font-size:11px;font-weight:600;color:rgba(148,163,184,0.5);">13:00 – 15:00</div>
+        <div style="font-size:15px;font-weight:700;color:#99f6e4;margin-top:2px;">🍜 Lunch &amp; Rest</div>
+        <div style="font-size:12px;color:rgba(153,246,228,0.6);">Meal &nbsp;·&nbsp; Nap &nbsp;·&nbsp; Social</div>
+      </div>
+      <div class="wblock block-teal">
+        <div style="font-size:11px;font-weight:600;color:rgba(148,163,184,0.5);">12:00 – 15:00</div>
+        <div style="font-size:15px;font-weight:700;color:#99f6e4;margin-top:2px;">👨‍👩‍👧 Family / Social</div>
+        <div style="font-size:12px;color:rgba(153,246,228,0.6);">Lunch &nbsp;·&nbsp; Quality time</div>
+      </div>
+
+      <!-- Row 4 -->
+      <div class="wblock block-green">
+        <div style="font-size:11px;font-weight:600;color:rgba(148,163,184,0.5);">15:00 – 18:00</div>
+        <div style="font-size:15px;font-weight:700;color:#86efac;margin-top:2px;">⚽ Sport / Hobby</div>
+        <div style="font-size:12px;color:rgba(134,239,172,0.6);">Play &nbsp;·&nbsp; Move &nbsp;·&nbsp; Explore</div>
+      </div>
+      <div class="wblock block-green">
+        <div style="font-size:11px;font-weight:600;color:rgba(148,163,184,0.5);">15:00 – 18:00</div>
+        <div style="font-size:15px;font-weight:700;color:#86efac;margin-top:2px;">🌿 Rest &amp; Recharge</div>
+        <div style="font-size:12px;color:rgba(134,239,172,0.6);">Walk &nbsp;·&nbsp; Nature &nbsp;·&nbsp; Unwind</div>
+      </div>
+
+      <!-- Row 5 -->
+      <div class="wblock block-violet">
+        <div style="font-size:11px;font-weight:600;color:rgba(148,163,184,0.5);">18:00 – 22:30</div>
+        <div style="font-size:15px;font-weight:700;color:#c4b5fd;margin-top:2px;">📖 Study &amp; Relax</div>
+        <div style="font-size:12px;color:rgba(196,181,253,0.6);">Reading &nbsp;·&nbsp; Light study</div>
+      </div>
+      <div class="wblock block-rose">
+        <div style="font-size:11px;font-weight:600;color:rgba(148,163,184,0.5);">18:00 – 22:30</div>
+        <div style="font-size:15px;font-weight:700;color:#fda4af;margin-top:2px;">🗓 Week Prep</div>
+        <div style="font-size:12px;color:rgba(253,164,175,0.6);">Plan &nbsp;·&nbsp; Pack &nbsp;·&nbsp; Early sleep</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Divider — 20px -->
+  <div style="height:20px; padding:0 40px; flex-shrink:0; display:flex; align-items:center; position:relative; z-index:1;">
+    <div class="divider-line" style="width:100%;"></div>
+  </div>
+
+  <!-- ══════════════ FOOTER — 212px ════════════════════════════════ -->
+  <div style="height:212px; padding:18px 40px 0; flex-shrink:0; position:relative; z-index:1; overflow:hidden;">
+
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+      <span class="section-label">Daily Micro-Tasks</span>
+      <div style="flex:1;height:1px;background:rgba(56,139,253,0.18);"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px 32px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="color:#60a5fa;font-size:14px;flex-shrink:0;">◆</span>
+        <span style="font-size:13px;color:rgba(203,213,225,0.75);">5-min journal each morning</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="color:#60a5fa;font-size:14px;flex-shrink:0;">◆</span>
+        <span style="font-size:13px;color:rgba(203,213,225,0.75);">10-min review before bed</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="color:#818cf8;font-size:14px;flex-shrink:0;">◆</span>
+        <span style="font-size:13px;color:rgba(203,213,225,0.75);">Drink 2 L water daily</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="color:#818cf8;font-size:14px;flex-shrink:0;">◆</span>
+        <span style="font-size:13px;color:rgba(203,213,225,0.75);">15-min walk between blocks</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="color:#2dd4bf;font-size:14px;flex-shrink:0;">◆</span>
+        <span style="font-size:13px;color:rgba(203,213,225,0.75);">Weekly goal review on Sunday</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="color:#2dd4bf;font-size:14px;flex-shrink:0;">◆</span>
+        <span style="font-size:13px;color:rgba(203,213,225,0.75);">Prep next day's tasks before sleep</span>
+      </div>
+    </div>
+
+    <!-- Bottom glow accent -->
+    <div style="margin-top:22px;height:2px;background:linear-gradient(90deg,transparent,#3b82f6 30%,#818cf8 70%,transparent);border-radius:2px;opacity:0.6;"></div>
+  </div>
+
+</div>
+</body>
+</html>
+
+<!--
+═══════════════════════════════════════════════════════════════════════
+  HOW TO EXPORT AS PNG (Mobile Wallpaper — 1080 × 1920 px)
+═══════════════════════════════════════════════════════════════════════
+
+  Option A — Chrome / Edge DevTools  (recommended, free)
+  ────────────────────────────────────────────────────────
+  1. Open wallpaper.html in Chrome or Edge.
+  2. Open DevTools  (F12)  → toggle Device Toolbar  (Ctrl+Shift+M).
+  3. Set custom size: 1080 × 1920.
+  4. Open Command Palette  (Ctrl+Shift+P) → run
+       "Capture full size screenshot"
+     The PNG is saved automatically.
+
+  Option B — Puppeteer  (Node.js, headless)
+  ──────────────────────────────────────────
+    npx puppeteer-core screenshot \
+      --url=file://$(pwd)/wallpaper.html \
+      --viewport=1080,1920 \
+      --output=wallpaper.png
+
+  Option C — Chromium CLI
+  ────────────────────────
+    chromium --headless --no-sandbox \
+      --screenshot=wallpaper.png \
+      --window-size=1080,1920 \
+      wallpaper.html
+
+═══════════════════════════════════════════════════════════════════════
+  Section heights (px) — sum = 1920
+  ─────────────────────────────────
+  Header    168
+  Mon–Fri   764
+  Divider    20
+  Weekend   736
+  Divider    20
+  Footer    212
+  ─────────────
+  Total    1920
+═══════════════════════════════════════════════════════════════════════
+-->
